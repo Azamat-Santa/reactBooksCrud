@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header/Header';
+import Home from './pages/Home/Home';
+import 'antd/dist/antd.css'; 
+import AddBook from './pages/AddBook/AddBook';
+import EditBook from './pages/EditBook/EditBook';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route  path="/addUser" element={<AddBook />} />
+          <Route  path="/editBook/:id" element={<EditBook />} />
+        </Routes>
+        
     </div>
   );
 }

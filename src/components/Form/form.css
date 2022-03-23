@@ -1,0 +1,19 @@
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+form input {
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius:5px;
+    border:none;
+    border: 1px solid rgb(61, 58, 58);
+}
+.form__text{
+    margin-bottom: 10px;
+
+}
+form div{
+    text-align: left;
+}
