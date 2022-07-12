@@ -5,6 +5,7 @@ import EditBook from "../EditBook/EditBook";
 import { render } from '@testing-library/react';
 const Home = () => {
   const [books, setBooks] = useState();
+  const [loadingRemove , setloadingRemove] = useState(false)
   const getBook = async () => {
     const req = await fetch("https://secure-oasis-57055.herokuapp.com/books");
     const resp = await req.json();
@@ -29,13 +30,17 @@ const Home = () => {
   }
 
   const removeBook = async (bookId) => {
+    setLodaingRemove(true)
     const res = await fetch(
       "https://secure-oasis-57055.herokuapp.com/books/" + bookId,
       {
         method: "delete",
       }
     );
+    setLodaingRemove(false)
+    
     getBook();
+    
   };
   const columes = [
     {
@@ -68,7 +73,7 @@ const Home = () => {
       key: "key",
       render: (_, record) => (
         <Button type="danger" id={record.key} onClick={() => removeBook(record.key)}>
-          Remove
+         loadingRemove ?  loading : Remove 
         </Button>
       ),
     },
